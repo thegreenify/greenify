@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "greenify",
+    "slug": "greenify",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
