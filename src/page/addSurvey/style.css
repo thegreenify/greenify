@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+.input-style {
+  width: 30%;
+}
+
+.input-style p{
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.input-style select {
+  border: none;
+  outline: none;
+  width: 100%;
+  border-bottom: 2px solid silver;
+  padding-bottom: 5px;
+}
+
+.input-style input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid silver;
+}
+
+.input-style input:focus,select:focus{
+  border-bottom: 2px solid red;
+}
+
+/* .title  .input-style .underline {
+  position: absolute; 
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: red;
+} */
