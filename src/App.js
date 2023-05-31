@@ -42,7 +42,7 @@ function App() {
           <Route path="/employ" element={<Employ />} />
           <Route path="/user" element={<User />} />
           <Route path="/add-employ" element={<AddEmploy />} />
-          <Route path="/meters" element={<Meters />} />
+          <Route path="/meters" />
           <Route path="/add-meters" element={<AddMeters />} />
           <Route path="/survey" element={<Survey />} />
           <Route path="/houses" element={<House/>}/>
@@ -51,6 +51,7 @@ function App() {
           <Route path="/geography" element={<Geography/>} />
           <Route path="/user-roles" element={<UserRoles/>}/>
           <Route path="/allocate-product" element={<AllocateProduct/>} />
+          <Route path="/stocks" element={<Meters/>} />
           {/* <Route path="/signup" exact element={<SignUp />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/" element={<Navigate replace to="/login" />} /> */}

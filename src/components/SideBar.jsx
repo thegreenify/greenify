@@ -22,19 +22,24 @@ const sideBarLink = [
     link: "/user",
     icon: <BiUser className="icon" />,
   },
+  {
+    title: "Meters",
+    link: "/meters",
+    icon: <BiUser className="icon" />,
+  },
   // {
-  //   title: "Employ",
-  //   link: "/employ",
+  //   title: "Stocks",
+  //   link: "/stocks",
   //   icon: <GrUserWorker className="icon" />,
   // },
 
   // { title: "Houses", link: "/houses", icon: <BsHouse className="icon" /> },
   { title: "Sites", link: "/survey", icon: <RiSurveyLine className="icon" /> },
-  // {
-  //   title: "Stock's",
-  //   link: "/meters",
-  //   icon: <BsBoxSeam className="icon" />,
-  // },
+  {
+    title: "Stocks",
+    link: "/stocks",
+    icon: <BsBoxSeam className="icon" />,
+  },
 ];
 const SideBar = () => {
   const [open, setOpen] = useState(false);
