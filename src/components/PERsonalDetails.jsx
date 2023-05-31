@@ -51,6 +51,29 @@ const PERsonalDetails = ({
             }}
           />
         </div>
+        <div style={{ backgroundColor: "#fff", width: "24%" }}>
+          <p>Role</p>
+        <select
+            style={{
+              border: "none",
+              outline: "none",
+              width: "95%",
+              marginLeft: "15px",
+              padding: "7px 0",
+            }}
+   
+          >
+             <option value="superAdmin">superAdmin</option>
+          <option value="Admin">Admin</option>
+          <option value="Surveyor">Surveyor</option>
+          <option value="Contractor">Contractor</option>
+          <option value="MeterInstaller">MeterInstaller</option>
+            
+  
+            
+          </select>
+
+      </div>
       </div>
       <div
         style={{
