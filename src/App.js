@@ -23,6 +23,7 @@ import UserRoles from "./page/userRoles/UserRoles";
 import House from "./page/houses/House";
 import Dashboard from "./page/dashboard/Dashboard";
 import AllocateProduct from "./page/allcoateProduct/AllocateProduct";
+import Stocks from "./page/stocks/Stock";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -42,7 +43,9 @@ function App() {
           <Route path="/employ" element={<Employ />} />
           <Route path="/user" element={<User />} />
           <Route path="/add-employ" element={<AddEmploy />} />
-          <Route path="/meters" />
+          <Route path="/meters"
+           element={<Stocks/>} 
+           />
           <Route path="/add-meters" element={<AddMeters />} />
           <Route path="/survey" element={<Survey />} />
           <Route path="/houses" element={<House/>}/>

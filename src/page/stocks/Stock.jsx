@@ -41,7 +41,7 @@ const Employ = () => {
   const columns = [
     {
       field: "fullName",
-      headerName: "Name",
+      headerName: "",
       width: 120,
       // renderCell: (params) => {
       //   return (
@@ -52,18 +52,18 @@ const Employ = () => {
       // },
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "",
+      headerName: "",
       width: 180,
     },
     {
-      field: "mobileNumber",
-      headerName: "Contact Number",
+      field: "",
+      headerName: "",
       width: 150,
     },
     {
-      field: "role",
-      headerName: "Role",
+      field: "",
+      headerName: "",
       width: 150,
     },
   ];
@@ -74,19 +74,7 @@ const Employ = () => {
   }));
   return (
     <div>
-      <Link
-        style={{
-          padding: "10px",
-          background: "#b7e9f7",
-          width: "230px",
-          margin: "10px 0",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-        to="/add-employ"
-      >
-        Add User{" "}
-      </Link>
+
       <div style={{ marginTop: "15px", height: 200 }}>
         <DataGrid
           rows={rows}
