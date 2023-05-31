@@ -12,29 +12,29 @@ import { RiSurveyLine } from "react-icons/ri";
 import { BsBoxSeam } from "react-icons/bs";
 
 const sideBarLink = [
-  {
-    title: "Dashboard",
-    link: "/",
-    icon: <MdOutlineDashboard className="icon" />,
-  },
+  // {
+  //   title: "Dashboard",
+  //   link: "/",
+  //   icon: <MdOutlineDashboard className="icon" />,
+  // },
   {
     title: "User",
     link: "/user",
     icon: <BiUser className="icon" />,
   },
-  {
-    title: "Employ",
-    link: "/employ",
-    icon: <GrUserWorker className="icon" />,
-  },
+  // {
+  //   title: "Employ",
+  //   link: "/employ",
+  //   icon: <GrUserWorker className="icon" />,
+  // },
 
-  { title: "Houses", link: "/houses", icon: <BsHouse className="icon" /> },
-  { title: "Survey", link: "/survey", icon: <RiSurveyLine className="icon" /> },
-  {
-    title: "Stock's",
-    link: "/meters",
-    icon: <BsBoxSeam className="icon" />,
-  },
+  // { title: "Houses", link: "/houses", icon: <BsHouse className="icon" /> },
+  { title: "Sites", link: "/survey", icon: <RiSurveyLine className="icon" /> },
+  // {
+  //   title: "Stock's",
+  //   link: "/meters",
+  //   icon: <BsBoxSeam className="icon" />,
+  // },
 ];
 const SideBar = () => {
   const [open, setOpen] = useState(false);

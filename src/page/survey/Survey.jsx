@@ -81,10 +81,10 @@ const Survey = () => {
         renderCell:(params)=>{
           return(
             <div style={{display:"flex",flexWrap:"wrap"}}>
-            {params.row.surveyor.map((item,index)=>(
+            {/* {params.row.surveyor.map((item,index)=>(
               <p key={index}>{item.surveyorId
                 .fullName}</p>
-            ))}
+            ))} */}
             </div>
           )
         }
@@ -137,7 +137,7 @@ const Survey = () => {
         }}
         to="/start-survey"
       >
-        Start Survey
+        Add New Site
       </Link>
       <div style={{ marginTop: "15px",height:"100vh" }}>
         <DataGrid
