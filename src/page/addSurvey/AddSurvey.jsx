@@ -12,13 +12,13 @@ const AddSurvey = () => {
   return (
     <div className="wrapper">
       <div style={{ display: "flex", width: "100%", paddingLeft: 72 }}>
-        <div className="button" style={{ marginRight: 10 }}>
+        {/* <div className="button" style={{ marginRight: 10 }}>
           Survey
-        </div>
-        <div className="button">Meter Installation</div>
+        </div> */}
+        {/* <div className="button">Meter Installation</div> */}
       </div>
       <SurveyAdd setSurveyId={setSurveyId} />
-      <AssignTo surveyId={surveyId} />
+      {/* <AssignTo surveyId={surveyId} /> */}
     </div>
   );
 };

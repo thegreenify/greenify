@@ -125,7 +125,7 @@ const SurveyAdd = ({ setSurveyId }) => {
         }}
       >
         <div className="input-style">
-          <p>Survey Name</p>
+          <p>Site Name</p>
           <input onChange={(e)=>setSurveyName(e.target.value)} />
         </div>
       </div>
@@ -155,7 +155,7 @@ const SurveyAdd = ({ setSurveyId }) => {
                 </select>
               </div>
               <div className="input-style">
-                <p>Region</p>
+                <p>Area</p>
                 <select onChange={(e) => setRegionName(e.target.value)}>
                   {regionData.map((item, index) => (
                     <option value={item.regionName} key={index}>
@@ -166,7 +166,7 @@ const SurveyAdd = ({ setSurveyId }) => {
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div className="input-style">
+              {/* <div className="input-style">
                 <p>Circle</p>
                 <select onChange={(e) => setCircleName(e.target.value)}>
                   {circleData.map((item, index) => (
@@ -175,8 +175,8 @@ const SurveyAdd = ({ setSurveyId }) => {
                     </option>
                   ))}
                 </select>
-              </div>
-              <div className="input-style">
+              </div> */}
+              {/* <div className="input-style">
                 <p>Zone</p>
                 <select onChange={(e) => setZoneName(e.target.value)}>
                   {zoneData.map((item, index) => (
@@ -185,8 +185,8 @@ const SurveyAdd = ({ setSurveyId }) => {
                     </option>
                   ))}
                 </select>
-              </div>
-              <div className="input-style">
+              </div> */}
+              {/* <div className="input-style">
                 <p>Division</p>
                 <select onChange={(e) => setPincode(e.target.value)}>
                   {divisionData.map((item, index) => (
@@ -195,16 +195,17 @@ const SurveyAdd = ({ setSurveyId }) => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                width: "65%",
+                paddingTop:"20px",
+                width: "100%",
               }}
             >
-              <div className="input-style" style={{ width: "46%" }}>
+              {/* <div className="input-style" style={{ width: "46%" }}>
                 <p>Sub Division</p>
                 <select
                   onChange={(e) => setArea({ ...area, city: e.target.value })}
@@ -215,9 +216,33 @@ const SurveyAdd = ({ setSurveyId }) => {
                     </option>
                   ))}
                 </select>
-              </div>
-              <div className="input-style" style={{ width: "46%" }}>
+              </div> */}
+              <div className="input-style" style={{ width: "100%",marginRight: "58px" }}>
                 <p>Pincode</p>
+                <select
+                  onChange={(e) => setArea({ ...area, city: e.target.value })}
+                >
+                  {pincodeData.map((item, index) => (
+                    <option value={item.pincode} key={index}>
+                      {item.pincode}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="input-style" style={{width: "100%",marginRight: "58px"}}>
+                <p>No. Of Houses</p>
+                <select
+                  onChange={(e) => setArea({ ...area, city: e.target.value })}
+                >
+                  {pincodeData.map((item, index) => (
+                    <option value={item.pincode} key={index}>
+                      {item.pincode}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="input-style" style={{width: "100%",marginRight: "58px" }}>
+                <p>No. Of Meters</p>
                 <select
                   onChange={(e) => setArea({ ...area, city: e.target.value })}
                 >
