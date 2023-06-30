@@ -86,6 +86,8 @@ exports.updateSurvey = async (req, res) => {
 
 exports.addAreaContact = async (req, res) => {
   try {
+    console.log(req.body);
+
     const contact = await contactModel.findOne({ _id: req.body.contactId });
     if (!contact) {
       const contactId = await contactModel.create({

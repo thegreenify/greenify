@@ -15,8 +15,10 @@ var areaRoute = require("./route/area");
 var surveyRoute = require("./route/survey");
 var houseRoute = require("./route/house");
 var meterRoute = require("./route/meter")
-
+const roleRoute = require("./route/role.route")
+const roughRoute = require("./route/rough.route")
 var app = express();
+app.use(cors());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
@@ -29,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(multer().any());
 app.use(cookieParser());
-app.use(cors());
+
 
 // Request Logger
 if (app.get("env") === "development") {
@@ -42,6 +44,8 @@ app.use("/area",areaRoute);
 app.use("/survey",surveyRoute);
 app.use("/house",houseRoute);
 app.use("/meter",meterRoute);
+app.use("/role",roleRoute);
+app.use("/rough",roughRoute);
 
 app.use(function (req, res, next) {
   next(createError(404));

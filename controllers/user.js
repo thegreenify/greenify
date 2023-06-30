@@ -23,31 +23,31 @@ exports.registerUser = async (req, res) => {
       password,
       otp,
     });
-    let transporter = nodemailer.createTransport({
-      service: "gmail",
+    // let transporter = nodemailer.createTransport({
+    //   service: "gmail",
 
-      auth: {
-        user: process.env.AUTH_EMAIL,
-        pass: process.env.AUTH_PASS,
-      },
-    });
-    let info = await transporter.sendMail({
-      from: process.env.AUTH_EMAIL,
-      to: email,
-      subject: "Verification mail by Greenify for testing api",
-      text: `Your One Time Password is ${otp} for email verification`,
-    });
+    //   auth: {
+    //     user: process.env.AUTH_EMAIL,
+    //     pass: process.env.AUTH_PASS,
+    //   },
+    // });
+    // let info = await transporter.sendMail({
+    //   from: process.env.AUTH_EMAIL,
+    //   to: email,
+    //   subject: "Verification mail by Greenify for testing api",
+    //   text: `Your One Time Password is ${otp} for email verification`,
+    // });
 
-    if (info) {
-      return res.status(200).send({
-        settings: {
-          success: "1",
-          message: "You have successfully registered.",
-        },
-      }); 
-    }
+    // if (info) {
+    //   return res.status(200).send({
+    //     settings: {
+    //       success: "1",
+    //       message: "You have successfully registered.",
+    //     },
+    //   }); 
+    // }
   } catch (err) {
-    console.log(err.message)
+    console.log(err)
     return res.status(500).send(err.message);
   }
 };

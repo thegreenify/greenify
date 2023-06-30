@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       trim: true,
+      required: true,
     },
     permanentAdd: {
       state: {
@@ -50,6 +51,10 @@ const userSchema = new mongoose.Schema(
         type: String,
         trim: true,
       },
+    },  role: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Role',
+      // required: true,
     },
   },
 
