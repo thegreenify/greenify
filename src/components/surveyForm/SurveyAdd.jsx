@@ -231,7 +231,7 @@ const SurveyAdd = ({ setSurveyId }) => {
               </div>
               <div className="input-style" style={{width: "100%",marginRight: "58px"}}>
                 <p>No. Of Houses</p>
-                <select
+                {/* <select
                   onChange={(e) => setArea({ ...area, city: e.target.value })}
                 >
                   {pincodeData.map((item, index) => (
@@ -239,11 +239,14 @@ const SurveyAdd = ({ setSurveyId }) => {
                       {item.pincode}
                     </option>
                   ))}
-                </select>
+                </select> */}
+                                <input type="number" />
+
               </div>
               <div className="input-style" style={{width: "100%",marginRight: "58px" }}>
                 <p>No. Of Meters</p>
-                <select
+                <input type="number" />
+                {/* <select
                   onChange={(e) => setArea({ ...area, city: e.target.value })}
                 >
                   {pincodeData.map((item, index) => (
@@ -251,7 +254,7 @@ const SurveyAdd = ({ setSurveyId }) => {
                       {item.pincode}
                     </option>
                   ))}
-                </select>
+                </select> */}
               </div>
             </div>
             <div

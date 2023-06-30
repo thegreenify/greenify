@@ -12,11 +12,11 @@ import { RiSurveyLine } from "react-icons/ri";
 import { BsBoxSeam } from "react-icons/bs";
 
 const sideBarLink = [
-  // {
-  //   title: "Dashboard",
-  //   link: "/",
-  //   icon: <MdOutlineDashboard className="icon" />,
-  // },
+  {
+    title: "Dashboard",
+    link: "/",
+    icon: <MdOutlineDashboard className="icon" />,
+  },
   {
     title: "User",
     link: "/user",
@@ -27,19 +27,14 @@ const sideBarLink = [
     link: "/meters",
     icon: <BiUser className="icon" />,
   },
-  // {
-  //   title: "Stocks",
-  //   link: "/stocks",
-  //   icon: <GrUserWorker className="icon" />,
-  // },
-
-  // { title: "Houses", link: "/houses", icon: <BsHouse className="icon" /> },
-  { title: "Sites", link: "/survey", icon: <RiSurveyLine className="icon" /> },
   {
     title: "Stocks",
     link: "/stocks",
-    icon: <BsBoxSeam className="icon" />,
+    icon: <GrUserWorker className="icon" />,
   },
+
+  // { title: "Houses", link: "/houses", icon: <BsHouse className="icon" /> },
+  { title: "Sites", link: "/survey", icon: <RiSurveyLine className="icon" /> },
   {
     title: "Installation",
     link: "/installation",

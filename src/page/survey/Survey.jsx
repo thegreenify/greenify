@@ -49,7 +49,7 @@ const Survey = () => {
       },
       {
         field:"surveyName",
-        headerName:"Survey Name",
+        headerName:"Site Name",
         width:150
       },
       {
