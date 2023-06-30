@@ -40,6 +40,11 @@ const sideBarLink = [
     link: "/stocks",
     icon: <BsBoxSeam className="icon" />,
   },
+  {
+    title: "Installation",
+    link: "/installation",
+    icon: <BsBoxSeam className="icon" />,
+  },
 ];
 const SideBar = () => {
   const [open, setOpen] = useState(false);

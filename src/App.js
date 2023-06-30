@@ -24,6 +24,8 @@ import House from "./page/houses/House";
 import Dashboard from "./page/dashboard/Dashboard";
 import AllocateProduct from "./page/allcoateProduct/AllocateProduct";
 import Stocks from "./page/stocks/Stock";
+import Installation from "./page/installation/installation";
+import Mapping from "./page/mapping/mapping";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -55,6 +57,8 @@ function App() {
           <Route path="/user-roles" element={<UserRoles/>}/>
           <Route path="/allocate-product" element={<AllocateProduct/>} />
           <Route path="/stocks" element={<Meters/>} />
+          <Route path="/installation" element={<Installation/>} />
+          <Route path="/mapping" element={<Mapping/>} />
           {/* <Route path="/signup" exact element={<SignUp />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/" element={<Navigate replace to="/login" />} /> */}

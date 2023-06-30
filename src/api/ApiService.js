@@ -1,6 +1,9 @@
 import Api from "./Api";
 
 export default {
+  getRough(){
+    return Api().get('rough/')
+  },
   getEmployees(){
     return Api().get('employ/get-employ')
   },

@@ -29,13 +29,13 @@ function CustomPagination() {
   );
 }
 
-const Meters = () => {
+const Installation = () => {
   const [meters, setMeters] = useState([]);
 
   useEffect(() => {
-    ApiService.getMeters().then((res) => {
-      setMeters(res.data);
-    });
+    // ApiService.getMeters().then((res) => {
+    //   setMeters(res.data);
+    // });
   }, []);
 
   console.log(meters[0]?.purchaseDate.split("T")[0]);
@@ -48,37 +48,24 @@ const Meters = () => {
       valueGetter: (params) => params.row.id,
     },
     {
-      field: "productName",
-      headerName: "Category",
+      field: "siteName",
+      headerName: "Site Name",
       width: 100,
     },
     {
-      field: "companyName",
-      headerName: "Company Name",
+      field: "contractorName",
+      headerName: "Contractor Name",
       width: 140,
     },
     {
-      field: "modelNumber",
-      headerName: "Model Number",
+      field: "totalHouses",
+      headerName: "Total Houses",
       width: 110,
     },
     {
-      field: "meterNumber",
-      headerName: "Meter S.No.",
-      width: 110,
-    },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 110,
-      valueGetter: (params) => params.row.allocatedTo || "Allocatted"
-
-    },
-    {
-      field: "allocattedTo",
-      headerName: "Allocatted to",
-      width: 110,
-      valueGetter: (params) => params.row.allocatedTo || "Umakant garg"
+      field: "totalMetersSupplied",
+      headerName: "Total Meters Supplied",
+      width: 210,
     },
 
     // {
@@ -89,45 +76,32 @@ const Meters = () => {
     //     return <p>{params.row.purchaseDate.split("T")[0]}</p>;
     //   },
     // },
+    {
+        field: "navigate",
+        headerName: "Actions",
+        width: 110,
+        renderCell: (params) => (
+          <Link to="/mapping">
+            <button className="button">Mapping</button>
+          </Link>
+        ),
+      },
   ];
 
-  const rows = meters.map((row, index) => ({
-    ...row,
-    id: index + 1,
-  }));
+  //   const rows = meters.map((row, index) => ({
+  //     ...row,
+  //     id: index + 1,
+  //   }));
+  const rows = [{
+    id:1,
+    siteName: "Aliganj",
+    contractorName: "Umakant Garg",
+    totalHouses : 315,
+    totalMetersSupplied : 315
+
+  }];
   return (
     <div>
-      <div style={{display:"flex",}}>
-      <Link
-        style={{
-          padding: "10px",
-          background: "#b7e9f7",
-          margin: "10px 0",
-          borderRadius: "5px",
-          cursor: "pointer",
-          textDecoration: "none",
-          color: "#000",
-          textAlign:"center"
-        }}
-        to="/add-meters"
-      >
-        Add Products
-      </Link>
-      <Link
-        style={{
-          padding: "10px",
-          background: "#b7e9f7",
-          margin: "10px",
-          borderRadius: "5px",
-          cursor: "pointer",
-          textDecoration: "none",
-          color: "#000",
-        }}
-        to="/allocate-product"
-      >
-        Allocate Product
-      </Link>
-      </div>
       <div
         style={{
           height: "90vh",
@@ -138,7 +112,7 @@ const Meters = () => {
           borderRadius: 5,
         }}
       >
-        <h3 style={{ padding: "10px 0 20px" }}>Product's</h3>
+        <h3 style={{ padding: "10px 0 20px" }}>Installation</h3>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -156,4 +130,4 @@ const Meters = () => {
   );
 };
 
-export default Meters;
+export default Installation;
