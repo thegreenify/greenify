@@ -1,23 +1,26 @@
-var createError = require("http-errors");
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var cors = require('cors');
-var logger = require("morgan");
-var multer = require("multer");
+const createError = require("http-errors");
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const cors = require('cors');
+const logger = require("morgan");
+const multer = require("multer");
 
-var dbCon = require("./lib/db");
+const dbCon = require("./lib/db");
 
-var userRoute = require("./route/user");
-var employRoute = require("./route/employ");
-var areaRoute = require("./route/area");
-var surveyRoute = require("./route/survey");
-var houseRoute = require("./route/house");
-var meterRoute = require("./route/meter")
+const userRoute = require("./route/user");
+const employRoute = require("./route/employ");
+const areaRoute = require("./route/area");
+const surveyRoute = require("./route/survey");
+const houseRoute = require("./route/house");
+const meterRoute = require("./route/meter")
 const roleRoute = require("./route/role.route")
 const roughRoute = require("./route/rough.route")
-var app = express();
+const app = express();
+const __dirname = path.dirname("")
+const buildPath = path.join(__dirname, "../frontend/build")
+
 app.use(cors());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -50,6 +53,18 @@ app.use("/rough",roughRoute);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
+app.use(express.static(buildPath))
+app.get("/*", function(req,res){
+  res.sendFile(
+    path.join(__dirname, "../frontend/build/index.html"),
+    function(err){
+      if(err){
+        res.status(500).send(err)
+      }
+    }
+  )
+})
 
 // error handler
 app.use(function (err, req, res, next) {
