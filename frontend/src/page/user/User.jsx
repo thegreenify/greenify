@@ -10,6 +10,18 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Link } from "react-router-dom";
 import ApiService from "../../api/ApiService";
+import UserTypes from "../../components/UserTypes";
+import { CgStack } from "react-icons/cg";
+import { StateModel } from "../../components/master/Model";
+import City from "../../components/master/City";
+import Region from "../../components/master/Region";
+import Circle from "../../components/master/Circle";
+import Zone from "../../components/master/Zone";
+import Division from "../../components/master/Division";
+import SubDivision from "../../components/master/SubDivision";
+import Pincode from "../../components/master/Pincode";
+import Allottees from "../../components/Allottees";
+import Vendors from "../../components/Vendors";
 
 function CustomPagination() {
   const apiRef = useGridApiContext();
@@ -29,80 +41,102 @@ function CustomPagination() {
   );
 }
 
-const Employ = () => {
-  const [surveyTeam, setSurveyTeam] = useState([]);
-
+const User = () => {
+  const [string, setString] = useState("State");
+  const [areaData, setAreaData] = useState([]);
   useEffect(() => {
-    ApiService.getEmployees().then((res) => {
-      setSurveyTeam(res.data);
+    ApiService.getAreas().then((res) => {
+      console.log(res.data);
+      setAreaData(res.data);
     });
   }, []);
+  const data = [
+    {
+      title: "Allotte",
+      colorCode: "#ff4a00",
+    },
+    {
+      title: "Vendor",
+      colorCode: "#55a3f4",
+    },
 
-  const columns = [
-    {
-      field: "fullName",
-      headerName: "Name",
-      width: 120,
-      // renderCell: (params) => {
-      //   return (
-      //     <Link to="/employ-detail" className="button">
-      //       Detail
-      //     </Link>
-      //   );
-      // },
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      width: 180,
-    },
-    {
-      field: "mobileNumber",
-      headerName: "Contact Number",
-      width: 150,
-    },
-    {
-      field: "role",
-      headerName: "Role",
-      width: 150,
-    },
+
   ];
-
-  const rows = surveyTeam.map((row, index) => ({
-    ...row,
-    id: index + 1,
-  }));
   return (
     <div>
-      <Link
+      <div
         style={{
-          padding: "10px",
-          background: "#b7e9f7",
-          width: "230px",
-          margin: "10px 0",
-          borderRadius: "5px",
-          cursor: "pointer",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          width: "95%",
         }}
-        to="/add-employ"
       >
-        Add User{" "}
-      </Link>
-      <div style={{ marginTop: "15px", height: 200 }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          sx={{}}
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-          components={{
-            Pagination: CustomPagination,
-          }}
-        />
+        {data.map((item, index) => (
+          <div
+            style={{
+              background: "#fff",
+              padding: "10px 20px",
+              boxShadow: "0px 5px 7px lightgrey",
+              fontSize: 17,
+              fontWeight: "bold",
+              width: 240,
+              marginBottom: 10,
+              borderRadius: 10,
+              color: `${item.colorCode}`,
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <div
+              style={{
+                width: 60,
+                height: 60,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                border: `1px solid ${item.colorCode}`,
+                borderRadius: 30,
+              }}
+            >
+              <CgStack style={{ fontSize: 35 }} />
+            </div>
+            <div
+              style={{
+                width: "60%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <p>{item.title}</p>
+              <p style={{ fontSize: 20, padding: "10px 0" }}>1</p>
+              <div
+                style={{
+                  fontSize: 11,
+                  border: `1px solid ${item.colorCode}`,
+                  padding: "5px 10px",
+                  borderRadius: 25,
+                  cursor: "pointer",
+                  width: "100%",
+                }}
+                onClick={() => setString(item.title)}
+              >
+                Click Here to view
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+
+      {string === "Vendor" ? (
+      <Vendors/>
+      ) : (
+       <Allottees/>
+      ) }
     </div>
   );
 };
 
-export default Employ;
+export default User;

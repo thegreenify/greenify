@@ -26,6 +26,8 @@ import AllocateProduct from "./page/allcoateProduct/AllocateProduct";
 import Stocks from "./page/stocks/Stock";
 import Installation from "./page/installation/installation";
 import Mapping from "./page/mapping/mapping";
+import AddAllottee from "./page/addAllottee/addAllottee";
+import AddVendor from "./page/addVendor/addVendor";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -45,6 +47,8 @@ function App() {
           <Route path="/employ" element={<Employ />} />
           <Route path="/user" element={<User />} />
           <Route path="/add-employ" element={<AddEmploy />} />
+          <Route path="/add-allottee" element={<AddAllottee />} />
+          <Route path="/add-vendor" element={<AddVendor/>} />
           <Route path="/meters"
            element={<Stocks/>} 
            />
