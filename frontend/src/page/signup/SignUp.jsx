@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import ApiService from "../../api/ApiService";
 import "./signup.css";
 import Card from "../../components/card/Card";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUp = () => {
   const [signup, setSignup] = useState(false);
@@ -14,18 +15,25 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+  const [reCAPTCHAToken, setReCAPTCHAToken] = useState("");  
+
 
   const handelSubmit = async () => {
     try {
-    //   const res = await axios.post(
-    //     "http://localhost:8000/user/register",
-    //     input
-    //   );
-     setSignup(true)
+      //   const res = await axios.post(
+      //     "http://localhost:8000/user/register",
+      //     input
+      //   );
+      if(!reCAPTCHAToken)return alert('Captcha need to be filled')
+      setSignup(true);
     } catch (err) {
       console.log(err.message);
     }
   };
+  const handleRecaptchaChange = (response) => {
+    setReCAPTCHAToken(response); // Update the reCAPTCHA token
+  };
+
 
   return (
     <div className="mainContainer">
@@ -85,6 +93,10 @@ const SignUp = () => {
               />
               <label>Password</label>
             </div>
+            <ReCAPTCHA
+            sitekey="6LdI2PcmAAAAAIuW8MSPI_FHOjyHtBxAWQuxcHkU"
+            onChange={handleRecaptchaChange}
+          />
             <div
               style={{
                 background: "#3bb19b",

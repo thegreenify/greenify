@@ -2,22 +2,36 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ApiService from "../../api/ApiService";
 import "./login.css";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
   const [input, setInput] = useState({
-    emailOrMobileNumber:"",
+    emailOrMobileNumber: "",
     password: "",
   });
+  const [reCAPTCHAToken, setReCAPTCHAToken] = useState("");  
+  const handleRecaptchaChange = (response) => {
+    setReCAPTCHAToken(response); // Update the reCAPTCHA token
+  };
 
- const handelSubmit =async()=>{
-    try{
-        const res = await ApiService.login(input.emailOrMobileNumber,input.password);
-        localStorage.setItem("token", res.data);
-			window.location = "/";
-    }catch(err){
-        console.log(err.message)
+  const handelSubmit = async () => {
+    try {
+      
+// console.log(reCAPTCHAToken,"reCAPTCHAToken");
+if(!reCAPTCHAToken) return alert('Captcha need to be filled')
+
+      const res = await ApiService.login(
+        input.emailOrMobileNumber,
+        input.password
+      );
+      localStorage.setItem("token", res.data);
+      window.location = "/";
+    } catch (err) {
+      console.log(err.message);
     }
- }
+  };
+
+
 
   return (
     <div className="mainContainer">
@@ -44,6 +58,10 @@ const Login = () => {
             />
             <label>Password</label>
           </div>
+          <ReCAPTCHA
+            sitekey="6LdI2PcmAAAAAIuW8MSPI_FHOjyHtBxAWQuxcHkU"
+            onChange={handleRecaptchaChange}
+          />
           <div
             style={{
               background: "#3bb19b",

@@ -63,9 +63,9 @@ function App() {
           <Route path="/stocks" element={<Meters/>} />
           <Route path="/installation" element={<Installation/>} />
           <Route path="/mapping" element={<Mapping/>} />
-          {/* <Route path="/signup" exact element={<SignUp />} />
+          <Route path="/signup" exact element={<SignUp />} />
         <Route path="/login" exact element={<Login />} />
-        <Route path="/" element={<Navigate replace to="/login" />} /> */}
+        <Route path="/" element={<Navigate replace to="/login" />} />
         </Routes>
       </div>
     </Router>
