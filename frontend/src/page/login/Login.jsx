@@ -20,17 +20,51 @@ const Login = () => {
 // console.log(reCAPTCHAToken,"reCAPTCHAToken");
 if(!reCAPTCHAToken) return alert('Captcha need to be filled')
 
-      const res = await ApiService.login(
+
+
+
+//setting the tole from the response in the local storage
+//& that user token will protect all other pages
+      const res = await login(
         input.emailOrMobileNumber,
         input.password
       );
-      localStorage.setItem("token", res.data);
+
+      localStorage.setItem("token", res.token);
       window.location = "/";
     } catch (err) {
       console.log(err.message);
     }
   };
 
+  async function login(emailOrMobileNumber, password) {
+    const url = "http://localhost:8000/users/login";
+    const data = {
+      email: emailOrMobileNumber,
+      password,
+    };
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+  
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error("Error logging in:", error);
+      throw error;
+    }
+  }
+  
 
 
   return (
@@ -48,7 +82,7 @@ if(!reCAPTCHAToken) return alert('Captcha need to be filled')
                 setInput({ ...input, emailOrMobileNumber: e.target.value })
               }
             />
-            <label>Email or Mobile Number</label>
+            <label>Email</label>
           </div>
           <div className="inputs">
             <input

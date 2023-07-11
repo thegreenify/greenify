@@ -27,7 +27,7 @@ exports.registerMeter = async (req, res) => {
 
 exports.getMeters = async(req,res)=>{
   try{
-    return res.status(200).send(await meterModel.find());
+    return res.status(200).send(await meterModel.find({}));
   }catch(err){
     return res.status(500).send(err.message)
   }

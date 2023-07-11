@@ -1,17 +1,17 @@
 import Api from "./Api";
 
 export default {
-  getRough(){
-    return Api().get('rough/')
+  getRough() {
+    return Api().get("rough/");
   },
-  getEmployees(){
-    return Api().get('employ/get-employ')
+  getEmployees() {
+    return Api().get("employ/get-employ");
   },
   getAreas() {
     return Api().get(`area/get-areas`);
   },
   addArea(state, city, circle, zone, division, subDivision, pincode) {
-    console.log(state, city, circle, zone, division, subDivision, pincode)
+    console.log(state, city, circle, zone, division, subDivision, pincode);
     return Api().post("area/add-area", {
       state,
       city,
@@ -22,22 +22,29 @@ export default {
       pincode,
     });
   },
-  getSurvey(){
-    return Api().get("survey/get-survey")
+  register(firstName, lastName, email, mobileNumber, password) {
+    // console.log(firstName, lastName, email, mobileNumber, password);
+    // return Api().post("users/register", {firstName, lastName, email, mobileNumber, password});
+
+
+    
   },
-  getEmployByDesignation(designation){
-    return Api().post("employ/get-employ-by-designation",{designation})
+  getSurvey() {
+    return Api().get("survey/get-survey");
   },
-  getHouse(){
-    return Api().get("house/get-all-house")
+  getEmployByDesignation(designation) {
+    return Api().post("employ/get-employ-by-designation", { designation });
   },
-  addMeters(fromData){
-    return Api().post("meter/add-meter",fromData)
+  getHouse() {
+    return Api().get("house/get-all-house");
   },
-  getMeters(){
-    return Api().get("meter/get-meters")
+  addMeters(fromData) {
+    return Api().post("meter/add-meter", fromData);
   },
-  getProductName(){
-    return Api().get("meter/get-product-name")
-  }
+  getMeters() {
+    return Api().get("meter/get-meters");
+  },
+  getProductName() {
+    return Api().get("meter/get-product-name");
+  },
 };

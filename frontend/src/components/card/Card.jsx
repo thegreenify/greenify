@@ -113,7 +113,7 @@ function Card() {
           color: "#fff",
           cursor: "pointer",
           marginTop: "50px",
-        }}
+        } }
         onClick={handelOtp}
       >
         Verify

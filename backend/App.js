@@ -34,7 +34,7 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-app.use("/user", userRoute);
+app.use("/users", userRoute);
 app.use("/employ", employRoute);
 app.use("/area", areaRoute);
 app.use("/survey", surveyRoute);

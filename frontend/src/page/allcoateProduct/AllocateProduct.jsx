@@ -30,13 +30,17 @@ function CustomPagination() {
 }
 
 const AllocateProduct = () => {
+  //product data is product types to select & allocate
   const [productData, setProductData] = useState([]);
+
   const [product, setProduct] = useState([]);
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
 
   useEffect(() => {
     ApiService.getMeters().then((res) => {
+      console.log(res.data,"products");
       setProduct(res.data);
+
       const ids = res.data.map((o) => o.productName);
       setProductData(
         res.data.filter(
@@ -46,7 +50,7 @@ const AllocateProduct = () => {
     });
   }, []);
 
-  console.log(rowSelectionModel);
+  // console.log(rowSelectionModel);
 
   const columns = [
     {
@@ -130,7 +134,7 @@ const AllocateProduct = () => {
           autoHeight={true}
           checkboxSelection
           onRowSelectionModelChange={(newRowSelectionModel) => {
-            console.log(newRowSelectionModel);
+            // console.log(newRowSelectionModel);
             setRowSelectionModel(newRowSelectionModel);
           }}
           rowSelectionModel={rowSelectionModel}

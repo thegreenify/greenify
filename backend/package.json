@@ -1,17 +1,14 @@
-
-
 {
   "name": "watermetersoftware",
   "version": "1.0.0",
   "description": "a water meter software for reding water consumption ",
   "main": "index.js",
   "scripts": {
-"start": "nodemon App.js",
+    "start": "nodemon App.js",
     "build": "npm i",
     "dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "author": "balajiyadav",
   "license": "ISC",
   "dependencies": {
@@ -34,6 +31,7 @@
     "path": "^0.12.7",
     "pdf2json": "^3.0.3",
     "razorpay": "^2.8.4",
+    "validator": "^13.9.0",
     "xlsx": "^0.18.5"
   }
 }

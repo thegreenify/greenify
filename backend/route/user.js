@@ -5,6 +5,6 @@ const userController = require("../controllers/user");
 const middleware = require("../middleware/authenticateUser");
 
 router.post("/register",userController.registerUser);
-router.post("/login-otp",userController.sendOtp)
+router.post("/login",userController.login)
 
 module.exports = router

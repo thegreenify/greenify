@@ -5,6 +5,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import Login from "./page/login/Login";
 import HomePage from "./page/homePage/HomePage";
 import SignUp from "./page/signup/SignUp";
@@ -31,15 +33,20 @@ import AddVendor from "./page/addVendor/addVendor";
 
 function App() {
   const user = localStorage.getItem("token");
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+  const isSignupPage = location.pathname === "/signup";
+  const showBars = !isLoginPage && !isSignupPage;
   return (
-    <Router>
-      <NavBar />
-      <SideBar />
+    <div>
+    {showBars && <NavBar />}
+    {showBars && <SideBar />}
+
       <div
         style={{
-          marginLeft: "14%",
-          padding: "100px 0 0 20px",
-          backgroundColor: "#f6f9fa",
+          marginLeft: showBars ? "14%": null,
+          padding:showBars? "100px 0 0 20px" : null,
+          backgroundColor: showBars ? "#f6f9fa" : null,
         }}
       >
         <Routes>
@@ -68,7 +75,7 @@ function App() {
         <Route path="/" element={<Navigate replace to="/login" />} />
         </Routes>
       </div>
-    </Router>
+    </div>
   );
 }
 

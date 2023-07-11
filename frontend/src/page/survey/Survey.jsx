@@ -36,7 +36,10 @@ const Survey = () => {
     const [area, setArea] = useState([]);
 
     useEffect(()=>{
-      ApiService.getSurvey().then((res)=> {setArea(res.data)})
+  
+      ApiService.getSurvey().then((res)=> {setArea(res.data);
+        // console.log(res.data, "sitessss");
+      })
     },[])
 
     console.log(area)
