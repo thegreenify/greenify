@@ -14,7 +14,7 @@ exports.registerUser = async (req, res) => {
   const { firstName, lastName, email, mobileNumber, password } = req.body;
 
   try {
-    console.log(req.body, "user body");
+    // console.log(req.body, "user body");
 
     const user = await userModel.register(
       firstName,
@@ -39,13 +39,22 @@ exports.login= async(req, res)=> {
   const { email, password } = req.body;
   try {
 
-    console.log(req.body, "login body");
+    // console.log(req.body, "login body");
     const user = await userModel.login(email, password);
     // console.log(user, "userrrrrrrrr");
     //create a token
     const token = createToken(user._id);
     const permissions = user?.role?.permissions ?? [] ;
     const response = { email, token, permissions };
+
+    req.session.user = {
+      email,
+      // Other user information you want to store in the session
+    };
+  
+    // Send response indicating successful login
+    res.cookie('session-id', req.session.id); 
+
     res.status(200).json({ ...response });
   } catch (e) {
     console.log(e.message);

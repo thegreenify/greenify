@@ -11,17 +11,48 @@ const roleRoute = require("./route/role.route");
 const roughRoute = require("./route/rough.route");
 const app = express();
 const path = require("path");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+
 // const __dirname = path.dirname("")
 //the above supposed to be commented as the __dirname is already declared below
 
 const buildPath = path.join(__dirname, "../frontend/build");
 
 require("dotenv").config();
-app.use(cors({ origin: "*" }));
+
+// Add the 'Access-Control-Allow-Credentials' header explicitly
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 const mongoURI = process.env.DB_URL;
-
+const store = new MongoDBStore({
+  uri: mongoURI,
+  collection: "sessions", // Collection name to store sessions in MongoDB
+  expires: 24 * 60 * 60 * 1000, // Session TTL (1 day)
+  connectionOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+});
+app.use(
+  session({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 1 day (session TTL)
+    },
+    store: store,
+  })
+);
 //last thing left is using the xl
 
 // Connect to MongoDB
@@ -33,6 +64,10 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
+
+store.on("error", function (error) {
+  console.error("MongoDB session store error:", error);
+});
 
 app.use("/users", userRoute);
 app.use("/employ", employRoute);

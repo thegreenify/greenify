@@ -9,30 +9,26 @@ const Login = () => {
     emailOrMobileNumber: "",
     password: "",
   });
-  const [reCAPTCHAToken, setReCAPTCHAToken] = useState("");  
+  const [reCAPTCHAToken, setReCAPTCHAToken] = useState("");
   const handleRecaptchaChange = (response) => {
     setReCAPTCHAToken(response); // Update the reCAPTCHA token
   };
 
   const handelSubmit = async () => {
     try {
-      
-// console.log(reCAPTCHAToken,"reCAPTCHAToken");
-if(!reCAPTCHAToken) return alert('Captcha need to be filled')
+      // console.log(reCAPTCHAToken,"reCAPTCHAToken");
+      if (!reCAPTCHAToken) return alert("Captcha need to be filled");
 
-
-
-
-//setting the tole from the response in the local storage
-//& that user token will protect all other pages
-      const res = await login(
-        input.emailOrMobileNumber,
-        input.password
-      );
+      //setting the tole from the response in the local storage
+      //& that user token will protect all other pages
+      const res = await login(input.emailOrMobileNumber, input.password);
 
       localStorage.setItem("token", res.token);
-      window.location = "/";
+
+
+      // window.location = "/";
     } catch (err) {
+      alert(err.message);
       console.log(err.message);
     }
   };
@@ -43,7 +39,7 @@ if(!reCAPTCHAToken) return alert('Captcha need to be filled')
       email: emailOrMobileNumber,
       password,
     };
-  
+
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -51,12 +47,13 @@ if(!reCAPTCHAToken) return alert('Captcha need to be filled')
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+        credentials: "include",
       });
-  
+
       if (!response.ok) {
         throw new Error("Login failed");
       }
-  
+
       const responseData = await response.json();
       return responseData;
     } catch (error) {
@@ -64,8 +61,6 @@ if(!reCAPTCHAToken) return alert('Captcha need to be filled')
       throw error;
     }
   }
-  
-
 
   return (
     <div className="mainContainer">

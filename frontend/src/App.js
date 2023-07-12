@@ -37,6 +37,9 @@ function App() {
   const isLoginPage = location.pathname === "/login";
   const isSignupPage = location.pathname === "/signup";
   const showBars = !isLoginPage && !isSignupPage;
+
+  const cookiesString = document.cookie;
+
   return (
     <div>
     {showBars && <NavBar />}
@@ -50,7 +53,7 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={cookiesString ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path="/employ" element={<Employ />} />
           <Route path="/user" element={<User />} />
           <Route path="/add-employ" element={<AddEmploy />} />
@@ -59,17 +62,74 @@ function App() {
           <Route path="/meters"
            element={<Stocks/>} 
            />
-          <Route path="/add-meters" element={<AddMeters />} />
-          <Route path="/survey" element={<Survey />} />
-          <Route path="/houses" element={<House/>}/>
-          <Route path="/start-survey" element={<AddSurvey />} />
-          <Route path="/employ-detail" element={<EmployDetail/>}/>
-          <Route path="/geography" element={<Geography/>} />
-          <Route path="/user-roles" element={<UserRoles/>}/>
-          <Route path="/allocate-product" element={<AllocateProduct/>} />
-          <Route path="/stocks" element={<Meters/>} />
-          <Route path="/installation" element={<Installation/>} />
-          <Route path="/mapping" element={<Mapping/>} />
+          <Route
+            path="/employ"
+            element={cookiesString ? <Employ /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/user"
+            element={cookiesString ? <User /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/add-employ"
+            element={cookiesString ? <AddEmploy /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/add-allottee"
+            element={cookiesString ? <AddAllottee /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/add-vendor"
+            element={cookiesString ? <AddVendor /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/meters"
+            element={cookiesString ? <Stocks /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/add-meters"
+            element={cookiesString ? <AddMeters /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/survey"
+            element={cookiesString ? <Survey /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/houses"
+            element={cookiesString ? <House /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/start-survey"
+            element={cookiesString ? <AddSurvey /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/employ-detail"
+            element={cookiesString ? <EmployDetail /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/geography"
+            element={cookiesString ? <Geography /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/user-roles"
+            element={cookiesString ? <UserRoles /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/allocate-product"
+            element={cookiesString ? <AllocateProduct /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/stocks"
+            element={cookiesString ? <Meters /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/installation"
+            element={cookiesString ? <Installation /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/mapping"
+            element={cookiesString ? <Mapping /> : <Navigate to="/login" />}
+          />
           <Route path="/signup" exact element={<SignUp />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/" element={<Navigate replace to="/login" />} />
