@@ -1,4 +1,5 @@
 const userModel = require("../models/user");
+const allotteeModel = require('../models/allottee');
 const otpGenerator = require("otp-generator");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
@@ -7,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
 };
+
 
 exports.registerUser = async (req, res) => {
   const { firstName, lastName, email, mobileNumber, password } = req.body;
@@ -50,3 +52,41 @@ exports.login= async(req, res)=> {
     res.status(500).json({ error: e.message });
   }
 }
+
+
+
+
+// Controller function to add a new allottee
+exports.addAllottee = async (req, res) => {
+  try {
+    const { name, email, gender, dob, state, city, area, pincode, mobile, address, profileimage, idproof, idproofno, pancardno, pancard, openingbal, crdr } = req.body;
+
+    // Create a new allottee document and save it to the database
+    const savedAllottee = await allotteeModel.create({
+      name,
+      email,
+      gender,
+      dob,
+      state,
+      city,
+      area,
+      pincode,
+      mobile,
+      address,
+      profileimage,
+      idproof,
+      idproofno,
+      pancardno,
+      pancard,
+      openingbal,
+      crdr,
+    });
+
+    res.status(201).json({status:true, data:savedAllottee});
+  } catch (error) {
+    console.error('Error adding allottee:', error);
+    res.status(500).json({ error: 'Failed to add allottee' });
+  }
+};
+
+
